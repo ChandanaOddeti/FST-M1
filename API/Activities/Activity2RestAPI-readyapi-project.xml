@@ -3,7 +3,7 @@
   <con:settings/>
   <con:interface xsi:type="con:RestService" id="a7a98f51-c9b8-4cbf-a47c-69f35d00c2f9" wadlVersion="http://wadl.dev.java.net/2009/02" name="https://petstore.swagger.io" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings id="c57e4a4e-3228-4ce0-9864-e10816804682"/>
-    <con:definitionCache/>
+    <con:definitionCache type="TEXT" rootPart=""/>
     <con:endpoints>
       <con:endpoint>https://petstore.swagger.io</con:endpoint>
     </con:endpoints>
@@ -29,8 +29,17 @@
           <con:element>Response</con:element>
         </con:representation>
         <con:request name="Request 1" id="fee7b4ab-967b-4493-8130-0cbede6334ff" mediaType="application/json">
-          <con:settings/>
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
           <con:endpoint>https://petstore.swagger.io</con:endpoint>
+          <con:request/>
+          <con:originalUri>https://petstore.swagger.io/v2/pet/findByStatus</con:originalUri>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
           <con:parameters>
             <con:entry key="status" value="sold."/>
           </con:parameters>
@@ -41,15 +50,15 @@
       </con:method>
     </con:resource>
   </con:interface>
-  <con:testSuite id="dd605947-645f-4df5-829c-482bd761b48c" name="https://petstore.swagger.io Test Suite">
+  <con:testSuite id="dd605947-645f-4df5-829c-482bd761b48c" name="Activity2RestAPI">
     <con:settings id="660e80ac-0269-4b7d-a3a4-8ddb7ec0745e"/>
     <con:runType>SEQUENTIAL</con:runType>
     <con:testCase id="5c9a290f-4941-4e28-af77-c46b5da6f941" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" keepSession="false" name="https://petstore.swagger.io Test Case 1" searchProperties="true" timeout="0">
       <con:settings/>
-      <con:testStep type="restrequest" name="Request 1" id="c38f2367-b524-4aec-abbe-a6302b2346b8">
+      <con:testStep type="restrequest" name="GET Request" id="c38f2367-b524-4aec-abbe-a6302b2346b8">
         <con:settings/>
         <con:config service="https://petstore.swagger.io" resourcePath="/v2/pet/findByStatus" methodName="FindByStatus" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-          <con:restRequest name="Request 1" id="fee7b4ab-967b-4493-8130-0cbede6334ff" mediaType="application/json">
+          <con:restRequest name="GET Request" id="fee7b4ab-967b-4493-8130-0cbede6334ff" mediaType="application/json">
             <con:settings>
               <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
             </con:settings>
@@ -67,9 +76,7 @@
               <con:authType>No Authorization</con:authType>
             </con:credentials>
             <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
-            <con:parameters>
-              <con:entry key="status" value="sold."/>
-            </con:parameters>
+            <con:parameters/>
             <con:parameterOrder>
               <con:entry>status</con:entry>
             </con:parameterOrder>
@@ -78,6 +85,11 @@
       </con:testStep>
       <con:properties/>
       <con:reportParameters/>
+      <con:breakPoints>
+        <con:testStepId>c38f2367-b524-4aec-abbe-a6302b2346b8</con:testStepId>
+        <con:status>NONE</con:status>
+        <con:properties/>
+      </con:breakPoints>
     </con:testCase>
     <con:properties/>
     <con:reportParameters/>

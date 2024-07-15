@@ -108,6 +108,12 @@
           <con:params/>
           <con:element xmlns:user="https://petstore.swagger.io/v2/user/username">user:Fault</con:element>
         </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element xmlns:user="https://petstore.swagger.io/v2/user/username">user:Response</con:element>
+        </con:representation>
         <con:request name="Request 1" id="00dbe39e-b206-49e7-afb9-94119060a912" mediaType="application/json">
           <con:settings/>
           <con:endpoint>https://petstore.swagger.io</con:endpoint>
@@ -144,6 +150,12 @@
           <con:status>404</con:status>
           <con:params/>
           <con:element>data</con:element>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element xmlns:joh="https://petstore.swagger.io/v2/user/JohnDoe">joh:Response</con:element>
         </con:representation>
         <con:request name="Request 1" id="d7485210-52e1-4dea-bcfa-396facc5015e" mediaType="application/json">
           <con:settings/>
@@ -246,8 +258,8 @@
             </con:credentials>
             <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
             <con:parameters>
-              <con:entry key="password" value="JohnsPassword"/>
-              <con:entry key="username" value="JohnDoe"/>
+              <con:entry key="password" value="testuser"/>
+              <con:entry key="username" value="testuser"/>
             </con:parameters>
             <con:parameterOrder>
               <con:entry>username</con:entry>
@@ -278,7 +290,7 @@
             </con:credentials>
             <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
             <con:parameters>
-              <con:entry key="username" value="JohnDoe"/>
+              <con:entry key="username" value="testuser"/>
             </con:parameters>
             <con:parameterOrder>
               <con:entry>username</con:entry>
@@ -333,7 +345,7 @@
             </con:credentials>
             <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
             <con:parameters>
-              <con:entry key="username" value="JohnDoe"/>
+              <con:entry key="username" value="testuser"/>
             </con:parameters>
             <con:parameterOrder>
               <con:entry>username</con:entry>
