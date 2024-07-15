@@ -1,16 +1,23 @@
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
+import java.util.List;
 
-public class Project_activity5 {
+public class Activity6 {
 	// Driver Declaration
     AndroidDriver driver;
+    WebDriverWait wait;
 
  // Set up method
     @BeforeClass
@@ -28,21 +35,37 @@ public class Project_activity5 {
      
             // Driver Initialization
             driver = new AndroidDriver(serverURL, options);
+            wait = new WebDriverWait (driver, Duration.ofSeconds(10));
+            
+            driver.get("https://v1.training-support.net/selenium/lazy-loading");
         }
      
     // Test method
     @Test
     public void loginCheck() {
         
-        driver.findElement(AppiumBy.id("Firefox")).click();
-        driver.findElement(AppiumBy.id("com.android.chrome:id/url_bar")).sendKeys("https://v1.training-support.net/selenium/lazy-loading");
-        driver.findElement(AppiumBy.xpath("//android.widget.Button[@text=\"Login\"]")).click();
-        driver.findElement(AppiumBy.xpath("//android.widget.EditText")).sendKeys("admin");
-        driver.findElement(AppiumBy.xpath("//android.view.View[@resource-id=\"loginOverlay\"]/android.view.View/android.view.View[2]/android.widget.EditText")).sendKeys("password");
-        driver.findElement(AppiumBy.xpath("//android.widget.Button[@text=\"Log In\"]")).click();
-    
-    }
+    	String UiScrollable = "UiScrollable(UiSelector().scrollable(true))";
+    	
+        wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.className("android.widget.Image")));
+        
+        // Find all the image elements on the page
+        List<WebElement> imageElements = driver.findElements(AppiumBy.className("android.widget.Image"));
+        
+        // Print the number of images
+        System.out.println("Before scroll: " + imageElements.size());
+        
+        // Scroll using UiScrollable
+        driver.findElement(AppiumBy.androidUIAutomator(UiScrollable + ".scrollTextIntoView(\"helen\")"));
+        
+     // Get image elements after scroll
+        imageElements = driver.findElements(AppiumBy.className("android.widget.Image"));
  
+        // Print the number of images after scroll
+        System.out.println("After scroll: " + imageElements.size());
+ 
+        // Assertions
+        Assert.assertEquals(imageElements.size(), 5);
+    }
     // Tear down method
     @AfterClass
     public void tearDown() {
