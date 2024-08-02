@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel="false" name="Suite">
+    <test name="Test">
+    <groups>
+        <run>
+            <include name="HeaderTests" />
+            <!--<exclude name="HeaderTests" />-->
+        </run><![CDATA[ ]]>
+    </groups>
+        <classes>
+             <class name="Activities.Activity1"/>
+            <class name="Activities.Activity2"/>
+            <class name="Activities.Activity3"/>
+            <class name="Activities.Activity4"/>
+            <class name="Activities.Activity5"/>
+            <class name="Activities.Activity6"/>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
